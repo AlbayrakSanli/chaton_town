@@ -1,0 +1,29 @@
+<div class="container">
+    <h1 class="mb-1 jumbotitle text-primary">Chaton Town</h1>
+    <%= link_to "Nouveau chat à vendre", new_item_path, class:"btn btn-outline-primary btn-lg mx-1 my-1" %>
+    <h1 class="mb-3 text-primary">Voici la liste de chats à vendre :</h1>
+</div>
+
+<main class="container">
+  <br>
+    <div class="row row-cols-5 row-cols-md-3  p-md-0 m-md-0 d-flex justify-content-center">
+    <% @items.sort.each do |item| %>
+      <div class="card border-info text-center bg-light my-3 mx-3" style="max-width: 18rem;">
+
+        <div class="card-body">
+          <h5 class="card-title"><%= item.title %></h5>
+          <p class="card-text"><%= item.description %></p>
+          <p class="card-text"><%= item.price %></p>
+        </div>
+        <div class="card-footer">
+        <% if @admin %>
+          <%= link_to "Plus d'informations ?", item_path(item.id), class:"btn btn-outline-info mx-1 my-1" %>
+          <%= link_to 'Editer', edit_item_path(item.id), class:"btn btn-outline-success mx-1 my-1" %>
+          <%= link_to 'Destroy', item.id, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-outline-danger mx-1 my-1" %>
+        <% else %>
+          <%= link_to "Plus d'informations ?", item_path(item.id), class:"btn btn-outline-info mx-1 my-1" %>
+        <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
