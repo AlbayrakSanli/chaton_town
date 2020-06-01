@@ -1,0 +1,18 @@
+<div class="container">
+  <p id="notice"><%= notice %></p>
+  <div class="card-header">
+    <strong>Email de l'organisateur : </strong>
+  </div>
+  <h1 class="text-center"><%= @item.title %></h1>
+  <div class="card my-5">
+    <div class="card-header">
+      <%= image_tag("/images/banner-event-show.jpg", :type => :upload, :width => 1000, :height => 400, :crop => :fill) %>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item"><strong>Description : </strong><%= @item.description %></li>
+      <li class="list-group-item"><strong>Prix : </strong><%= @item.price %> €</li>
+    </ul>
+  </div>
+
+  <%= link_to 'Retour Accueil', root_path, class:"btn btn-primary" %>
+</div>
