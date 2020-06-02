@@ -29,8 +29,6 @@ ActiveRecord::Schema.define(version: 2020_06_01_151225) do
     t.datetime "updated_at", null: false
   end
 
-<<<<<<< HEAD
-=======
   create_table "join_table_order_items", force: :cascade do |t|
     t.bigint "order_id"
     t.bigint "item_id"
@@ -47,7 +45,6 @@ ActiveRecord::Schema.define(version: 2020_06_01_151225) do
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
->>>>>>> b7947ea9f3ec6e53ddb48dd4e64652cc649ea131
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
