@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Cart:</strong>
+  <%= @join.cart %>
+</p>
+
+<p>
+  <strong>Item:</strong>
+  <%= @join.item %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @join.quantity %>
+</p>
+
+<%= link_to 'Edit', edit_join_cart_item_path(@join) %> |
+<%= link_to 'Back', join_cart_items_path %>
