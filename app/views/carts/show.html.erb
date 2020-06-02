@@ -4,7 +4,7 @@
 
 <ul>
 
-  <% @cart.join_cart_items.each do |itemL| %>
+  <% @cart.line_items.each do |itemL| %>
     <li>
       <%= itemL.item.title %> (x = <%= itemL.quantity %>)
     </li>

@@ -1,8 +1,13 @@
 class Item < ApplicationRecord
+  has_many :line_items, dependent: :nullify
 
-  has_many :join_table_order_items
-  has_many :orders, through: :join_table_order_items
-
-  has_one_attached :picture
-
+  validates :title, :description, :image_url, presence:true
+  validates :price, numericality: {greater_than_or_equal_to: 1}
+  validates :title, uniqueness: {case_sensitive: false}
+  validates :image_url,
+    format: {
+      with: /\.{jpg|png|gif}\z/i,
+      message: "doit être au format jpg, png ou gif"
+    },
+    allow_blank: true
 end

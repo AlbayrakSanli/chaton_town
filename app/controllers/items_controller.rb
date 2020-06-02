@@ -30,7 +30,6 @@ class ItemsController < ApplicationController
           flash[:danger] = "La saisie n'a pas un format valide, merci de saisir à nouveau"
           redirect_to root_path
         end
-
       end
 
 
