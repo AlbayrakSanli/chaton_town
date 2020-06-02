@@ -22,7 +22,9 @@
           <%= link_to "Plus d'informations ?", item_path(item.id), class:"btn btn-outline-info mx-1 my-1" %>
         <% end %>
         </div>
+        <%= link_to "Ajouter au panier", join_cart_items_path(item.id), class:"btn btn-outline-info mx-1 my-1" %>
       </div>
     <% end %>
   </div>
 </main>
+
