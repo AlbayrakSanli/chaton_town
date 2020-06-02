@@ -1,51 +1,35 @@
 class CartsController < ApplicationController
-  before_action :set_cart, only: [:show, :edit, :update, :destroy]
-
-  def index
-    @carts = Cart.all
-  end
 
   def show
   end
 
-  def new
-    @cart = Cart.new
-  end
-
-  def edit
-  end
-
-  def create
-    @cart = Cart.new(cart_params)
-
-    if @cart.save
-      redirect_to @cart, notice: 'Cart a été créée.'
-    else
-      render :new
-    end
-  end
-
   def update
-    if @cart.update(cart_params)
-      redirect_to @cart, notice: 'Cart  a été mis à jour.'
-    else
-      render :edit
+    JoinCartItem.create(cart_id: @cart.id,
+                        item_id: Item.find(params[:id]).id,
+                        quantity: params[:quantity])
+
+    respond_to do |format|
+      format.js {}
+      format.html { render 'new'}
     end
   end
 
   def destroy
-    @cart.destroy
-    redirect_to carts_url, notice: 'Cart a été détruit.'
+    item = Item.find(params[:id])
+    JoinCartItem.find_by(cart_id: @cart.id, item_id: item.id).destroy
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def is_in_cart?(id)
+    self.join_cart_iems.find_by(cart_id: self.id, item_id: id)
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_cart
-      @cart = Cart.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def cart_params
-      params.fetch(:cart, {})
-    end
+  def cart_params
+    params.require(:cart).permit(:user_id, :id)
+  end
+
 end

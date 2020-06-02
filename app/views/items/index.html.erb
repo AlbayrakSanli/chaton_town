@@ -24,7 +24,10 @@
           <%= link_to "Plus d'informations ?", item_path(item.id), class:"btn btn-outline-info mx-1 my-1" %>
         <% end %>
         </div>
-        <%= link_to "Ajouter au panier", join_cart_items_path(item.id), class:"btn btn-outline-info mx-1 my-1" %>
+        <% if @cart.is_in_cart?(item.id)%>
+        <% else %>
+          <%= link_to '<i class="fas fa-cart-arrow-down"></i>'.html_safe, cart_url(item, 1), method: "PUT", remote: true, class: "btn btn-success", id:"go"%></a>
+        <% end %>
       </div>
     <% end %>
   </div>
