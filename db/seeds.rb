@@ -25,11 +25,13 @@ chatonUrl = [
 
 Item.destroy_all
 
+i = 0
 20.times do
-  Item.create(
+    item = Item.new(
     title: Faker::Creature::Cat.name,
     description: Faker::Creature::Cat.registry,
-    price: rand(1000),
-    image_url: "ok"
-  )
+    price: rand(1000))
+    # image_url: "chatonUrl"
+    item.picture.attach(io: File.open("db/cat/cat#{i+=1}.jpg"), filename: 'cat.jpg', content_type: 'image/jpeg')
+    item.save
 end
