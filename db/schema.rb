@@ -37,10 +37,8 @@ ActiveRecord::Schema.define(version: 2020_06_03_194104) do
   end
 
   create_table "carts", force: :cascade do |t|
-    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_carts_on_user_id"
   end
 
   create_table "items", force: :cascade do |t|
@@ -92,7 +90,6 @@ ActiveRecord::Schema.define(version: 2020_06_03_194104) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "carts", "users"
   add_foreign_key "join_cart_items", "carts"
   add_foreign_key "join_cart_items", "items"
 end
