@@ -1,4 +1,6 @@
 class CartsController < ApplicationController
+  before_action :authenticate_user!, only: [:show, :update]
+
   def show
   end
 
@@ -11,10 +13,6 @@ class CartsController < ApplicationController
     item = Item.find(params[:id])
     JoinCartItem.find_by(cart_id: @cart.id, item_id: item.id).destroy
     redirect_to cart_path(@cart)
-  end
-
-  def is_in_cart?(id)
-    self.join_cart_iems.find_by(cart_id: self.id, item_id: id)
   end
 
   private
