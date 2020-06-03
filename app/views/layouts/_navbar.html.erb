@@ -16,7 +16,7 @@
               Profil/Sign-out
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <%= link_to "Mon profil", user_path(current_user) , class: 'dropdown-item'%>
+              <%= link_to "Mon profil", edit_user_registration_path(current_user), class: 'dropdown-item'%>
               <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, data: {confirm: "Es tu sûr de te déconnecter ?"} , class: 'dropdown-item'%>
             </div>
           </li>
