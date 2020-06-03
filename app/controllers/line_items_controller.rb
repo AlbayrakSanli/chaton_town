@@ -1,5 +1,4 @@
 class LineItemsController < ApplicationController
-  include CurrentCart
   before_action :set_cart, only: [:create]
   before_action :set_line_item, only: [:show, :edit, :update, :destroy]
 
@@ -73,5 +72,10 @@ class LineItemsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def line_item_params
       params.require(:line_item).permit(:cart_id, :item_id, :quantity)
+    end
+
+    def set_cart
+      @cart = Cart.find_by(id: session[:cart_id]) || Cart.create
+      session[:cart_id] ||= @cart.id
     end
 end

@@ -16,11 +16,21 @@ class LineItemsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create line_item" do
+    chaton = items(:one)
+
     assert_difference('LineItem.count') do
-      post line_items_url, params: { line_item: { cart_id: @line_item.cart_id, product_id: @line_item.product_id, quantity: @line_item.quantity } }
+      post line_items_url, params: { item_id: chaton.id }
     end
 
-    assert_redirected_to line_item_url(LineItem.last)
+    assert_redirected_to cart_url(LineItem.last.cart)
+    follow_redirect!
+
+    assert_select "li", "#{chaton.title} (x 1)"
+
+    post line_items_url, params: {item_id: chaton.id }
+    follow_redirect!
+
+    assert_select "li", "#{chaton.title} (x 2)"
   end
 
   test "should show line_item" do
