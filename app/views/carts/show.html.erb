@@ -6,11 +6,16 @@
 
   <% @cart.join_cart_items.each do |itemL| %>
     <li class="mb-3">
-      <%= itemL.item.title %> (Quantité = 1) <%= link_to "Supprimer", cart_path(itemL.item), method: "DELETE",class: "btn-sm btn-danger"%>
+      <%= itemL.item.title %> (Quantité = 1) <%= itemL.item.price %>€ <%= link_to "Supprimer", cart_path(itemL.item), method: "DELETE",class: "btn-sm btn-danger"%>
     </li>
   <% end %>
 
 </ul>
+
+<% unless @cart.join_cart_items == [] %>
+  <%= link_to "Commander", orders_path(current_user), method: "post", class: "btn-sm btn-danger"%>
+<% end %>
+
 
 <p>
   <%= link_to "Retour aux produits", root_path %>
