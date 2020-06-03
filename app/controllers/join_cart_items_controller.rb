@@ -51,7 +51,7 @@ class JoinCartItemsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def line_item_params
-      params.require(:join_cart_item).permit(:cart_id, :item_id, :quantity)
+      params.require(:line_item).permit(:cart_id, :item_id, :quantity)
     end
 
     def set_cart

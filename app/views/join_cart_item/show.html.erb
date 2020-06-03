@@ -2,18 +2,18 @@
 
 <p>
   <strong>Cart:</strong>
-  <%= @line_item.cart %>
+  <%= @join.cart %>
 </p>
 
 <p>
   <strong>Item:</strong>
-  <%= @line_item.item %>
+  <%= @join.item %>
 </p>
 
 <p>
   <strong>Quantity:</strong>
-  <%= @line_item.quantity %>
+  <%= @join.quantity %>
 </p>
 
-<%= link_to 'Edit', edit_line_item_path(@line_item) %> |
-<%= link_to 'Back', line_items_path %>
+<%= link_to 'Edit', edit_join_cart_item_path(@join) %> |
+<%= link_to 'Back', join_cart_items_path %>

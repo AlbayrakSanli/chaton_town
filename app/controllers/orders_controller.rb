@@ -10,8 +10,12 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new(user: params[:user])
+    @order = Order.new(user: current_user)
     if @order.save
+      @cart.join_cart_items.each { |joint|
+        JoinTableOrderItem.create(order: @order, item: joint.item)
+        joint.destroy
+      }
       redirect_to root_path
       flash[:success] = "New order created"
     else
