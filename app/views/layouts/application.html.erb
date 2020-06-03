@@ -18,8 +18,19 @@
   </head>
 
   <body>
+    <!--    Navigation-->
     <%= render "layouts/navbar"%>
-    <%= render "layouts/jumbotron" %>
-    <%= yield %>
+
+    <!--    Page content-->
+    <div class="container">
+      <!--      Jumbotron Header-->
+      <%= render "layouts/jumbotron" %>
+      <%= yield %>
+
+    </div>
+
+    <!--    Footer-->
+    <%= render "layouts/footer" %>
+
   </body>
 </html>

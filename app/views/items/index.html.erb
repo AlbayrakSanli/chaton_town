@@ -1,33 +1,26 @@
-<div class="container">
-    <h1 class="mb-3 text-primary">Voici la liste de chats à vendre :</h1>
-</div>
+<div class="row text-center">
 
-<main class="container">
-  <br>
-    <div class="row row-cols-5 row-cols-md-3  p-md-0 m-md-0 d-flex justify-content-center">
-    <% @items.sort.each do |item| %>
-      <div class="card border-info text-center bg-light my-3 mx-3" style="max-width: 18rem;">
-
+<% @items.sort.each do |item| %>
+    <div class="col-lg-3 col-md-6 mb-4">
+      <div class="card h-100">
+        <%= image_tag item.picture, height: "200px;" %>
         <div class="card-body">
-          <h5 class="card-title"><%= item.title %></h5>
+          <h4 class="card-title"><%= item.title %></h4>
           <p class="card-text"><%= item.description %></p>
           <p class="card-text"><%= item.price %></p>
         </div>
         <div class="card-footer">
-        <% if @admin %>
-          <%= link_to "Plus d'informations ?", item_path(item.id), class:"btn btn-outline-info mx-1 my-1" %>
-          <%= link_to 'Editer', edit_item_path(item.id), class:"btn btn-outline-success mx-1 my-1" %>
-          <%= link_to 'Destroy', item.id, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-outline-danger mx-1 my-1" %>
-        <% else %>
-          <%= link_to "Plus d'informations ?", item_path(item.id), class:"btn btn-outline-info mx-1 my-1" %>
-        <% end %>
+          <% if @admin %>
+            <%= link_to "Plus d'informations ?", item_path(item.id), class:"btn btn-outline-info mx-1 my-1" %>
+            <%= link_to 'Editer', edit_item_path(item.id), class:"btn btn-outline-success mx-1 my-1" %>
+            <%= link_to 'Destroy', item.id, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-outline-danger mx-1 my-1" %>
+          <% else %>
+            <%= link_to "Plus d'informations ?", item_path(item.id), class:"btn btn-outline-info mx-1 my-1" %>
+          <% end %>
         </div>
-        <% if @cart.is_in_cart?(item.id)%>
-        <% else %>
-          <%= link_to '<i class="fas fa-cart-arrow-down"></i>'.html_safe, cart_url(item, 1), method: "PUT", remote: true, class: "btn btn-success", id:"go"%></a>
-        <% end %>
+        <%= button_to "Ajouter au panier", line_items_path(item_id: item), class:"btn btn-outline-info mx-1 my-1" %>
       </div>
-    <% end %>
-  </div>
-</main>
+    </div>
+<% end %>
 
+</div>

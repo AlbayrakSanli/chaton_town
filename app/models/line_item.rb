@@ -1,7 +1,11 @@
+<<<<<<< HEAD:app/models/join_cart_item.rb
 class JoinCartItem < ApplicationRecord
   before_create :already_exist?
   after_create :null
 
+=======
+class LineItem < ApplicationRecord
+>>>>>>> developpement:app/models/line_item.rb
   belongs_to :cart
   belongs_to :item
 

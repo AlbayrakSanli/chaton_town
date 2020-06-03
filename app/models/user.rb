@@ -4,6 +4,7 @@ class User < ApplicationRecord
   after_create :user_cart
 
   has_one :cart, dependent: :destroy
+
   has_many :orders
   has_many :users, through: :comments
 
