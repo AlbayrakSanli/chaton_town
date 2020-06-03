@@ -5,8 +5,8 @@
 <ul>
 
   <% @cart.join_cart_items.each do |itemL| %>
-    <li>
-      <%= itemL.item.title %> (x = <%= itemL.quantity %>)
+    <li class="mb-3">
+      <%= itemL.item.title %> (Quantité = 1) <%= link_to "Supprimer", cart_path(itemL.item), method: "DELETE",class: "btn-sm btn-danger"%>
     </li>
   <% end %>
 
