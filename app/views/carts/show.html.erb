@@ -13,8 +13,9 @@
 </ul>
 
 <% unless @cart.join_cart_items == [] %>
-  <%= link_to "Commander", orders_path(current_user), method: "post", class: "btn-sm btn-danger"%>
+  <%= link_to "Checkout and pay", new_charge_path(@cart), class: "btn-sm btn-danger" %>
 <% end %>
+
 
 
 <p>

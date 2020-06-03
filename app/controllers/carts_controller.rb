@@ -1,5 +1,5 @@
 class CartsController < ApplicationController
-  before_action :authenticate_user!, only: [:show, :update]
+  before_action :authenticate_user, only: [:show, :update]
 
   def show
   end
@@ -15,9 +15,17 @@ class CartsController < ApplicationController
     redirect_to cart_path(@cart)
   end
 
+  def authenticate_user
+    unless current_user
+      flash[:danger] = "Not logged in."
+      redirect_to root_path
+    end
+  end
+
   private
 
   def cart_params
     params.require(:cart).permit(:user_id, :id)
   end
+
 end
