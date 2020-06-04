@@ -7,7 +7,7 @@
         <div class="card-body">
           <h4 class="card-title"><%= item.title %></h4>
           <p class="card-text"><%= item.description %></p>
-          <p class="card-text">Prix : <%= item.price %> €</p>
+          <p class="card-text"><%= item.price.to_i %>€</p>
         </div>
           <% if user_signed_in? %>
             <%= link_to "Plus d'informations ?", item_path(item.id), class:"btn btn-outline-info mx-1 my-1" %>

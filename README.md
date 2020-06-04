@@ -1,24 +1,48 @@
-# README
+# Week 9
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## The Hacking Project - Chaton Town
 
-Things you may want to cover:
+#### [Click here to access the website on Heroku](lien)
 
-* Ruby version
+email administrateur : chaton-sauvage@yopmail.com
 
-* System dependencies
+## Ruby & Rails versions
 
-* Configuration
+* Ruby 2.5.1
+* Rails 5.2.4
 
-* Database creation
+## Installing and Launching
 
-* Database initialization
+To start app, you may have to do : <br />
 
-* How to run the test suite
+* $ heroku run rails db:migrate:status
+* $ heroku run rails db:create
+* $ heroku run rails db:migrate
+* $ heroku run rails db:seed
 
-* Services (job queues, cache servers, search engines, etc.)
+Otherwise, if you ever run this app on <em> localhost:3000 </em>, please do :
 
-* Deployment instructions
+* $ bundle install
+* $ rails db:create
+* $ rails db:migrate
+* $ rails db:migrate:status
+* $ rails db:seed
+* $ rails server
 
-* ...
+If you encounter an error like 'user already connected on localhost', you may use :
+
+* $ lsof -wni tcp:4567  <br /> 
+and fetch the PIB number
+
+Then do : <br />
+
+* $ kill -9 [PIB]
+
+## Database initialization
+
+To fulfill the database with data run: 
+
+* $ rails db:seed
+
+
+

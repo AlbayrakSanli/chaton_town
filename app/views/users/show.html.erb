@@ -1,17 +1,39 @@
-<h1> <%= @email %> </h1>
+<div class="mt-3 container">
+  <h1 class="text-center">Profil de <%= @email %> </h1>
 
-<%= link_to "Modifier mon email et/ou mot de passe", edit_user_registration_path(current_user), class: 'btn btn-primary' %>
+  <div class="text-center">
+    <%= link_to "Modifier mon email et/ou mot de passe", edit_user_registration_path(current_user), class: 'btn btn-primary' %>
+  </div>
 
-<h2>Mes commandes passées</h2>
+  <h2 class="mt-3 text-center">Mes commandes passées</h2>
 
-<% @orders.each do |order| %>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col"> </th>
+          <th scope="col">N° de commande</th>
+          <th scope="col">Item</th>
+          <th scope="col" class="text-center">Quantité</th>
+          <th></th>
+          <th scope="col" class="text-right">Prix</th>
+        </tr>
+     </thead>
+      <tbody>
+    <% @orders.each do |order| %>
+      <% order.items.each do |item| %>
+        <tr>
+          <td></td>
+          <td>N°<%= order.id %></td>
+          <td><%= item.title %></td>
+          <td class="text-center">1</td>
+          <td></td>
+          <td class="text-right"><%= item.price %>€</td>
+        </tr>
+        <% end %>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
 
-<p>Commande N°<%= order.id %></p>
-
-  <% order.items.each do |item| %>
-
-    <p><%= item.title %> - Quantité : 1 - Prix : <%= item.price %>€</p>
-
-  <% end %>
-
-<% end %>
+</div>

@@ -1,6 +1,4 @@
 class JoinCartItemsController < ApplicationController
-
-  # les fonctions sont dans private
   before_action :set_cart, only: [:create]
   before_action :set_line_item, only: [:show, :edit, :update, :destroy]
 
@@ -44,12 +42,10 @@ class JoinCartItemsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_line_item
       @join = JoinCartItem.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def line_item_params
       params.require(:line_item).permit(:cart_id, :item_id, :quantity)
     end
