@@ -24,7 +24,7 @@
                     <tbody>
                       <% @cart.join_cart_items.each do |itemL| %>
                         <tr>
-                            <td><%= link_to "Show", item_path(itemL.item), method: "GET",class: "btn-sm btn-danger"%> <%= link_to "Supprimer", cart_path(itemL.item), method: "DELETE",class: "btn-sm btn-danger"%></td>
+                            <td><%= link_to "Voir", item_path(itemL.item), method: "GET",class: "btn-sm btn-danger"%> <%= link_to "Supprimer", cart_path(itemL.item), method: "DELETE",class: "btn-sm btn-danger"%></td>
                             <td><%= itemL.item.title %></td>
                             <td><%= itemL.item.description %></td>
                             <td class="text-center">1</td>

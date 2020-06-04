@@ -3,7 +3,6 @@ class ChargesController < ApplicationController
   end
 
   def create
-    # Amount in cents
     @amount = (@cart.total * 100).to_i
 
     customer = Stripe::Customer.create({

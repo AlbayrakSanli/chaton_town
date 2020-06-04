@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-  resources :carts
+  resources :carts, path: "mon_panier"
   resources :join_cart_items
-  devise_for :users
-  resources :users, only: :show
+  devise_for :users, path: "profil"
+  resources :users, only: :show, path: "profil"
   root to: "items#index"
-  resources :items
+  resources :items, path: "chaton"
   resources :orders
-  resources :charges
+  resources :charges, path: "paiement"
 end
