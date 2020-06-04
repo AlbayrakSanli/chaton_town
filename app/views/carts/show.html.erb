@@ -38,16 +38,16 @@
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td>Sub-Total</td>
-                            <td class="text-right"><%= @cart.total %> €</td>
+                            <td></td>
+                            <td></td>
                         </tr>
                         <tr>
                             <td></td>
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td>Shipping</td>
-                            <td class="text-right">6,90 €</td>
+                            <td></td>
+                            <td></td>
                         </tr>
                         <tr>
                             <td></td>
@@ -55,7 +55,7 @@
                             <td></td>
                             <td></td>
                             <td><strong>Total</strong></td>
-                            <td class="text-right"><strong><%= @cart.total + 6.90 %> €</strong></td>
+                            <td class="text-right"><strong><%= @cart.total %> €</strong></td>
                         </tr>
                     </tbody>
                 </table>
@@ -64,7 +64,7 @@
         <div class="col mb-2">
             <div class="row">
                 <div class="col-sm-12 col-md-6">
-                  <%= link_to "Encore du shopping", root_path , class: 'btn btn-lg btn-block text-uppercase btn-light'%>
+                  <%= link_to "Encore du shopping", root_path , class: 'btn btn-lg btn-block text-uppercase btn-info'%>
                 </div>
                 <div class="col-sm-12 col-md-6 text-right">
                   <% unless @cart.join_cart_items == [] %>

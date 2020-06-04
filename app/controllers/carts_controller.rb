@@ -1,10 +1,6 @@
 class CartsController < ApplicationController
   before_action :authenticate_user, only: [:show, :update]
 
-  def show
-    total(@cart)
-  end
-
   def update
     JoinCartItem.create(cart_id: @cart.id, item_id: Item.find(params[:id]).id, quantity: params[:quantity])
     redirect_to cart_path(@cart)
