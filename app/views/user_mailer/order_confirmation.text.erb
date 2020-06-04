@@ -1,0 +1,10 @@
+Salut <%= @user.email %> !
+==========================================================
+
+Nous avons bien réceptionné ta commande et nous te remercions de ta confiance !
+
+<% @items.each do |item| %>
+  <%= image_tag item.picture, height: "300px;" %>
+<% end %>
+
+À très vite sur Chaton Town !

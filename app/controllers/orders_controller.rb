@@ -5,10 +5,6 @@ class OrdersController < ApplicationController
     @email = @user.email
   end
 
-  def edit
-    @order = Order.find(params[:id])
-  end
-
   def create
     @order = Order.new(user: current_user)
     if @order.save
@@ -37,13 +33,6 @@ class OrdersController < ApplicationController
     else
       flash[:failure] = "Order delete failed"
       render :edit
-    end
-  end
-
-  def authenticate_user
-    unless current_user
-      flash[:danger] = "Not logged in."
-      redirect_to root_path
     end
   end
 

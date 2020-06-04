@@ -39,7 +39,7 @@
                             <td></td>
                             <td></td>
                             <td>Sub-Total</td>
-                            <td class="text-right"><%= @summ %> €</td>
+                            <td class="text-right"><%= @cart.total %> €</td>
                         </tr>
                         <tr>
                             <td></td>
@@ -55,7 +55,7 @@
                             <td></td>
                             <td></td>
                             <td><strong>Total</strong></td>
-                            <td class="text-right"><strong><%= @summ + 6.90 %> €</strong></td>
+                            <td class="text-right"><strong><%= @cart.total + 6.90 %> €</strong></td>
                         </tr>
                     </tbody>
                 </table>

@@ -2,16 +2,8 @@ class UsersController < ApplicationController
   before_action :authenticate_user, only: [:show, :edit]
 
   def show
-    @user = User.find(params[:id])
-    @email = @user.email
-  end
-
-  def edit
-    @user = User.find(params[:id])
-  end
-
-  def update
-    @user = User.find(params[:id])
+    @email = current_user.email
+    @orders = current_user.orders
   end
 
   def destroy
