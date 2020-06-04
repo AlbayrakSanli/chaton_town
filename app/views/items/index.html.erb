@@ -7,20 +7,12 @@
         <div class="card-body">
           <h4 class="card-title"><%= item.title %></h4>
           <p class="card-text"><%= item.description %></p>
-          <p class="card-text"><%= item.price %></p>
+          <p class="card-text">Prix : <%= item.price %> €</p>
         </div>
-        <div class="card-footer">
-          <% if @admin %>
+          <% if user_signed_in? %>
             <%= link_to "Plus d'informations ?", item_path(item.id), class:"btn btn-outline-info mx-1 my-1" %>
-            <%= link_to 'Editer', edit_item_path(item.id), class:"btn btn-outline-success mx-1 my-1" %>
-            <%= link_to 'Destroy', item.id, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-outline-danger mx-1 my-1" %>
-          <% else %>
-            <%= link_to "Plus d'informations ?", item_path(item.id), class:"btn btn-outline-info mx-1 my-1" %>
+            <%= link_to 'Ajouter au panier', cart_url(item, 1), method: "PUT", class:"btn btn-outline-info mx-1 my-1" %>
           <% end %>
-        </div>
-        <% if user_signed_in? %>
-          <%= link_to 'Ajouter au panier', cart_url(item, 1), method: "PUT", class:"btn btn-outline-info mx-1 my-1" %>
-        <% end %>
       </div>
     </div>
 <% end %>

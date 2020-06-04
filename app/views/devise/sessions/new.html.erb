@@ -3,7 +3,7 @@
     <div class="col-md-6 offset-md-3">
       <br><br><br>
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <h2 class="h3 mb-3 font-weight-normal text-center">Log in</h2>
+        <h2 class="h3 mb-3 font-weight-normal text-center">Connexion</h2>
 
         <div class="field">
           <%= f.label :email %><br />
@@ -23,7 +23,7 @@
         <% end %>
 
         <div class="actions">
-          <%= f.submit "Log in", class: "btn btn-outline-primary mb-1" %>
+          <%= f.submit "Connexion", class: "btn btn-outline-primary mb-1" %>
         </div>
 
       <% end %>

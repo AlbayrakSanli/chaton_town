@@ -13,6 +13,8 @@
 
 *= require bootstrap
 *= require heroic-features
+*= require_tree .
+*= require_self
 
  */
  html, body {

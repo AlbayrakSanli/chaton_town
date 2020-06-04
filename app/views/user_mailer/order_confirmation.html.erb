@@ -2,9 +2,14 @@
 <html>
   <head>
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <style type="text/css">
+      body{
+        background-color: red;
+      }
+    </style>
   </head>
   <body>
-    <h1>Salut <%= @user.email %> !</h1>
+    <h1 style="background-color: red;">Salut <%= @user.email %> !</h1>
     <p>
       Nous avons bien réceptionné ta commande et nous te remercions de ta confiance !
     </p>
