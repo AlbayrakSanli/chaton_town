@@ -5,17 +5,19 @@
 <ul>
 
   <% @cart.join_cart_items.each do |itemL| %>
-    <li class="mb-3">
-      <%= itemL.item.title %> (Quantité = 1) <%= itemL.item.price %>€ <%= link_to "Supprimer", cart_path(itemL.item), method: "DELETE",class: "btn-sm btn-danger"%>
-    </li>
+  <li class="mb-3">
+    <%= itemL.item.title %> (Quantité = 1) <%= itemL.item.price %>€ <%= link_to "Supprimer", cart_path(itemL.item), method: "DELETE",class: "btn-sm btn-danger"%>
+  </li>
   <% end %>
+  <li>
+    Total : <%= @cart.total %>€
+  </li>
 
 </ul>
 
 <% unless @cart.join_cart_items == [] %>
   <%= link_to "Checkout and pay", new_charge_path(@cart), class: "btn-sm btn-danger" %>
 <% end %>
-
 
 
 <p>

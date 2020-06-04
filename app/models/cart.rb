@@ -14,4 +14,13 @@ class Cart < ApplicationRecord
 
     itemL
   end
+
+  def total
+    total = 0
+    self.join_cart_items.each { |item|
+      total += item.item.price
+    }
+    return total
+  end
+
 end
