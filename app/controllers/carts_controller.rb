@@ -2,7 +2,7 @@ class CartsController < ApplicationController
   before_action :authenticate_user!, only: [:show, :update]
 
   def show
-    total
+    total(@cart)
   end
 
   def update
@@ -22,9 +22,9 @@ class CartsController < ApplicationController
     params.require(:cart).permit(:user_id, :id)
   end
 
-  def total
+  def total(cart)
       @summ = 0
-      @items = JoinCartItem.all
+      @items = JoinCartItem.where(cart_id: cart)
       @items.each do |join|
           @summ += join.item.price
       end

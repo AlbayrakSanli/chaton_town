@@ -1,24 +1,77 @@
+<section class="jumbotron text-center">
+    <div class="container">
+        <h1 class="jumbotron-heading">PANIER</h1>
+     </div>
+</section>
+
 <p id="notice"><%= notice %></p>
 
-<h2>Panier</h2>
+<div class="container mb-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col"> </th>
+                            <th scope="col">Product</th>
+                            <th scope="col">Description</th>
+                            <th scope="col" class="text-center">Quantity</th>
+                            <th></th>
+                            <th scope="col" class="text-right">Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                      <% @cart.join_cart_items.each do |itemL| %>
+                        <tr>
+                            <td><%= link_to "Show", item_path(itemL.item), method: "GET",class: "btn-sm btn-danger"%> <%= link_to "Supprimer", cart_path(itemL.item), method: "DELETE",class: "btn-sm btn-danger"%></td>
+                            <td><%= itemL.item.title %></td>
+                            <td><%= itemL.item.description %></td>
+                            <td class="text-center">1</td>
+                            <td></td>
+                            <td class="text-right"><%= itemL.item.price %>€</td>
+                        </tr>
+                      <% end %>
 
-<ul>
-
-  <% @cart.join_cart_items.each do |itemL| %>
-    <li class="mb-3">
-      <%= itemL.item.title %> (Quantité = 1) <%= itemL.item.price %>€ <%= link_to "Show", item_path(itemL.item), method: "GET",class: "btn-sm btn-danger"%> <%= link_to "Supprimer", cart_path(itemL.item), method: "DELETE",class: "btn-sm btn-danger"%>
-    </li>
-  <% end %>
-
-</ul>
-
-<p>Somme totale : <%= @summ %></p>
-
-<% unless @cart.join_cart_items == [] %>
-  <%= link_to "Commander", orders_path(current_user), method: "post", class: "btn-sm btn-danger"%>
-<% end %>
-
-
-<p>
-  <%= link_to "Retour aux produits", root_path %>
-</p>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>Sub-Total</td>
+                            <td class="text-right"><%= @summ %> €</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>Shipping</td>
+                            <td class="text-right">6,90 €</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td><strong>Total</strong></td>
+                            <td class="text-right"><strong><%= @summ + 6.90 %> €</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col mb-2">
+            <div class="row">
+                <div class="col-sm-12 col-md-6">
+                  <%= link_to "Encore du shopping", root_path , class: 'btn btn-lg btn-block text-uppercase btn-light'%>
+                </div>
+                <div class="col-sm-12 col-md-6 text-right">
+                  <% unless @cart.join_cart_items == [] %>
+                    <%= link_to "Passer commande", orders_path(current_user), method: "post", class: "btn btn-lg btn-block btn-success text-uppercase"%>
+                  <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
