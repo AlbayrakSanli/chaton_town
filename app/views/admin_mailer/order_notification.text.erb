@@ -1,6 +1,10 @@
 Bonjour cher Admin !
 ==========================================================
 
-Une nouvelle commande vient d'être passée :
+Une nouvelle commande vient d'être passée par <%= @user.email %> :
+
+<% @items.each do |item| %>
+- <%= item.title %>
+<% end %>
 
 À très vite !

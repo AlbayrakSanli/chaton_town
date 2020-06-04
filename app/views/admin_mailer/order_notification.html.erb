@@ -6,8 +6,13 @@
   <body>
     <h1>Bonjour cher Admin !</h1>
     <p>
-      Une nouvelle commande vient d'être passée :</br>
+      Une nouvelle commande vient d'être passée par <%= @user.email %> :</br>
     </p>
-    <p> À très vite !
+    <p>
+    <% @items.each do |item| %>
+    - <%= item.title %></br>
+    <% end %>
+    </p>
+    <p> À très vite !</p>
   </body>
 </html>
