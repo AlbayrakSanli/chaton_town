@@ -3,3 +3,15 @@
 <%= link_to "Modifier mon email et/ou mot de passe", edit_user_registration_path(current_user), class: 'btn btn-primary' %>
 
 <h2>Mes commandes passées</h2>
+
+<% @orders.each do |order| %>
+
+<p>Commande N°<%= order.id %></p>
+
+  <% order.items.each do |item| %>
+
+    <p><%= item.title %> - Quantité : 1 - Prix : <%= item.price %>€</p>
+
+  <% end %>
+
+<% end %>

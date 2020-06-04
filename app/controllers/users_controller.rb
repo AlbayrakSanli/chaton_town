@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
   def show
     @email = current_user.email
+    @orders = current_user.orders
   end
 
   def destroy
