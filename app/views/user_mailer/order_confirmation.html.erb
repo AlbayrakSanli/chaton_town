@@ -8,9 +8,9 @@
     <p>
       Nous avons bien réceptionné ta commande et nous te remercions de ta confiance !
     </p>
-    <p>
-      !!! PHOTO DU CHAT !!!
-    </p>
+  <% @items.each do |item| %>
+    <%= image_tag item.picture, height: "300px;" %>
+  <% end %>
     <p> À très vite sur Chaton Town !</p>
   </body>
 </html>
